@@ -1,3 +1,6 @@
+import { DataSource } from 'typeorm';
+import { User } from '../entities';
+
 export interface TokenPair {
   accessToken: string;
   refreshToken: string;
@@ -27,9 +30,11 @@ export interface LeaderboardEntry {
 
 // Extend Fastify's request type with authenticated user
 declare module 'fastify' {
+  interface FastifyInstance {
+    db: DataSource;
+  }
+
   interface FastifyRequest {
-    user?: {
-      userId: string;
-    };
+    user?: User;
   }
 }
