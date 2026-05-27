@@ -8,6 +8,7 @@ import { registerSwaggerDocs } from './plugins/swagger';
 import { registerRequestTrace, TRACE_ID_HEADER } from './plugins/requestTrace';
 import healthRoutes from "./routes/public/health";
 import authRoutes from "./routes/public/auth";
+import { registerRequestLogging } from "./plugins/requestLogging";
 
 const buildApp = async () => {
   const app = Fastify({
@@ -24,6 +25,7 @@ const buildApp = async () => {
 
   app.setErrorHandler(errorHandler);
   await registerRequestTrace(app);
+  await registerRequestLogging(app);
 
   // Register plugins
   await app.register(cors, { origin: true });
@@ -32,7 +34,6 @@ const buildApp = async () => {
   await app.register(dbPlugin);
   await app.register(healthRoutes);
   await app.register(authRoutes, { prefix: '/api/auth' });
-  // TODO: Register auth middleware (see middleware/auth.ts)
 
   return app;
 };
