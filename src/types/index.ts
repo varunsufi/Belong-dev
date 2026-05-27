@@ -1,10 +1,6 @@
 import { DataSource } from 'typeorm';
 import { User } from '../entities';
-
-export interface TokenPair {
-  accessToken: string;
-  refreshToken: string;
-}
+import { Meta } from '../schemas/common';
 
 export interface PaginationOptions {
   page: number;
@@ -13,19 +9,7 @@ export interface PaginationOptions {
 
 export interface PaginatedResult<T> {
   data: T[];
-  meta: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-  };
-}
-
-export interface LeaderboardEntry {
-  rank: number;
-  userId: string;
-  displayName: string | null;
-  totalPoints: number;
+  meta: Meta;
 }
 
 // Extend Fastify's request type with authenticated user

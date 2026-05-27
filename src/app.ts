@@ -10,6 +10,7 @@ import healthRoutes from "./routes/public/health";
 import authRoutes from "./routes/public/auth";
 import { registerRequestLogging } from "./plugins/requestLogging";
 import adminRoutes from "./routes/admin";
+import authenticatedRoutes from "./routes/authenticated";
 
 const buildApp = async () => {
   const app = Fastify({
@@ -35,6 +36,7 @@ const buildApp = async () => {
   await app.register(dbPlugin);
   await app.register(healthRoutes);
   await app.register(authRoutes, { prefix: '/api/auth' });
+  await app.register(authenticatedRoutes, { prefix: '/api' });
   await app.register(adminRoutes, { prefix: '/api/admin' });
 
   return app;
