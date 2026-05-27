@@ -21,4 +21,8 @@ export const config = {
     accessExpiresIn: '15m',
     refreshExpiresIn: '7d',
   },
+
+  admin: {
+    apiKey: process.env.ADMIN_API_KEY || 'change-me-to-an-admin-api-key',
+  },
 };

@@ -1,4 +1,5 @@
 export type AppErrorCode =
+  | 'CHALLENGE_NOT_FOUND'
   | 'EMAIL_ALREADY_EXISTS'
   | 'FORBIDDEN'
   | 'INVALID_ACCESS_TOKEN'
@@ -8,6 +9,7 @@ export type AppErrorCode =
   | 'INTERNAL_SERVER_ERROR';
 
 const defaultMessages: Record<AppErrorCode, string> = {
+  CHALLENGE_NOT_FOUND: 'Challenge not found',
   EMAIL_ALREADY_EXISTS: 'An account with this email already exists',
   FORBIDDEN: 'Forbidden',
   INVALID_ACCESS_TOKEN: 'Invalid access token',
@@ -18,6 +20,7 @@ const defaultMessages: Record<AppErrorCode, string> = {
 };
 
 const defaultStatusCodes: Record<AppErrorCode, number> = {
+  CHALLENGE_NOT_FOUND: 404,
   EMAIL_ALREADY_EXISTS: 409,
   FORBIDDEN: 403,
   INVALID_ACCESS_TOKEN: 401,
