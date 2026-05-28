@@ -2,6 +2,6 @@
 module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'node',
-    testMatch: ['**/*.test.ts'],
-    testPathIgnorePatterns: ['\\.integration\\.test\\.ts$'],
+    testMatch: ['**/*.integration.test.ts'],
+    testTimeout: 60000,
 };
